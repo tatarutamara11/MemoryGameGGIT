@@ -1,26 +1,3 @@
- 
-  .back {
-	transform: rotateY(180deg);
-	background-color: white;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-  }
-  .front {
-	background: url('https://www.google.com/search?q=molddata&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjki8-y3ZPkAhUPAhAIHcfgDhYQ_AUIESgB&biw=1422&bih=720#imgrc=IimLW4YmcYpf3M:') no-repeat center center / contain;
-  }
-  .clicked {
-	border: 2px solid blue;
-  }
-  .show  {
-	  /* transform: rotateY(180deg); */
-	  border: 4px solid blue;
-}
- 
-  .game {
-	padding-top: 35px;  
-	padding-bottom: 25px;
-}
 .header {
 	padding: 25px 0;
 	max-width: 960px;
@@ -71,6 +48,7 @@ a{text-decoration: none;}
 
 
 
+
 @media only screen and (  max-width: 600px){
     .row img {
         width: 75%;
@@ -89,43 +67,4 @@ a{text-decoration: none;}
     .title{
         font-size:6px ;
     }
-}
-.frontImage {
-	width: 80;
-	height: 80;
-}
-.button_cont {
-	border: none;
-	padding: 14px 15px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 20px;
-	-webkit-transition-duration: 0.4s; /* Safari */
-	transition-duration: 0.4s;
-	cursor: pointer;
-	background-color: white; 
-	color: red; 
-	border: 2px solid #99ccff;
-	font-family: 'Roboto', sans-serif;
-	margin: 0 auto; width: 144px; 
-	border-radius: 4px;
-
-}
-
-.button_cont:hover {
-	background-color: #99ccff;
-	color: white;
-	
-}
-.example_f:hover{
-	color:white;
-	
-}
-footer {
-	padding: 55px ;
-
-}
-.disclaimer {
-	opacity: 0.6;
-	font-size: 14px;
 }

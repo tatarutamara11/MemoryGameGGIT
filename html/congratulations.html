@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/congratulations.css">
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        var moves =localStorage.getItem("movesNumber");
+        var timePlay = localStorage.getItem("totalTime");
+        var nick = localStorage.getItem("nickname");
+
+        $(document).ready(function(){
+            $('#moves').html(moves);
+            $('#timePlays').html(Math.round(timePlay));
+            $('#nick').html(nick);
+        })
+        </script>
+</head>
+<body  background="../html/images/confeti2.jpg"  >
+  
+    <div class="congrats" align="center">
+            
+        <h1 class="title">Congratulations,  <br><label id='nick'></label>! </h1>
+        <h3 class="won">You won </h3>
+       <h3 class="results"> You made: <label id='moves'></label> moves<br>
+        Time: <label id='timePlays'></label> seconds</h3>
+        
+
+
+    </div>
+    
+    <div class="modal-overlay">
+        <div class="modal">
+        
+            <div class="button_cont" align="center">
+                <a class="example_f" href="game.html"  target="_blank" rel="nofollow"><span>Play Again</a>
+            </div>
+        </div>
+    </div>
+    <script type="javascript">
+
+    
+</script>
+</body>
+
+</html>

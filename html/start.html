@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+
+    <link rel="stylesheet" href="../css/start.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+   
+</head>
+<body>
+    <div >  
+            <div id="namer">
+                    <div id="namer-input">
+                           
+                     <input type="text" name="namername" placeholder="Scrie un NickName" onchange="javascript:return setNick(this)"/>
+                    </div>
+                    <div class="namer-controls">
+                     <div><button onclick="javascript:return setLevel(1)">Usor</button></div>
+                     <div><button onclick="javascript:return setLevel(2)">Mediu</button></div>
+                     <div><button onclick="javascript:return setLevel(3)">Greu</button></div>
+                    </div>
+                   </div>
+                   <div class="button_cont" align="center"><a class="example_f" href="game.html" target="_blank" rel="nofollow"><span>Start</a></div>
+                    <div class='info'> <h4> Î.S. MoldData este o întreprindere specializată în elaborarea sistemelor informatice pentru administraţie şi business, menite să optimizeze  atît procesele de luare a deciziilor, cît şi activitatea curentă de management.  </h4>
+           
+                        <h3> Cu ocazia împlinirii a 26 ani de activitate, stagiarele de la <a href= "https://girlsgoit.org"> GirlsGoIT</a> au creat un joc. <br/>Intra si vezi despre ce e vorba.</h3> 
+                      </div>  
+            
+    </div>
+</body>
+<script>
+function setLevel(level){
+    localStorage.setItem("level", level);
+    return false;
+}
+function setNick(e) {
+    localStorage.setItem("nickname", $(e).val());
+    return false;
+}
+</script>
+</html>

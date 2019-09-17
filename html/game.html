@@ -7,24 +7,64 @@
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-    
+        <!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+            <meta charset="UTF-8">
+            <title>Memory Game</title>
+            <link rel="stylesheet" href="../css/header.css">
+        </head>
+        
+        <body>
+            <!-- Header -->
+            <header class="headerStyle">
+                <div class="row">
+                    <div class="img">
+                        <a href="molddata.md">
+                            <img src="../html/images/molddata.png" alt="Logo">
+                        </a>
+                    </div>
+                         <div class="title"  align="center"><a href="start.html" target="_blank" rel="nofollow"><h1 class="title">Memory Game</h1></a></div>
+                    <div class="img">
+                        <a href="girlsgoit.org" class=" img">
+                            <img src="../html/images/GGIT.png" alt="GGIT "></a>
+                        </a>
+                    </div>
+                </div>
+        
+            </header>
+            <!--End of Header -->
+      <div class="space">
+
+      </div>
+        
+       
 <div class="wrap">
     <div class="game">
-        <table id="game-cards"></table>
+        <table align="center" id="game-cards"></table>
     </div>
         
         <div class="modal-overlay">
             <div class="modal">
-                <h2 class="winner">You Rock!</h2>
-                <button class="restart">Play Again?</button>
+            
+                <div class="button_cont" align="center">
+                    <a class="example_f" href="game.html"  target="_blank" rel="nofollow"><span>Play Again</a>
+                </div>
             </div>
         </div>
         <footer>
-            <p class="disclaimer">All logos are property of their respective owners, No Copyright infringement intended.</p>
+            <p class="disclaimer" align="center">ⓒ 2019, GirlsGoIT, MoldData <br> All logos are property of their respective owners, No Copyright infringement intended.</p>
         </footer>
-      </div><!-- End Wrap -->
+        <input type="hidden" id='status_card' card_one='' cell_one = '' card_two='' cell_two=''/>
+</div><!-- End Wrap -->
+
+
+
+
+
         
     <script src="../js/owngames.js"></script>
       
     </body>
-    
+</html>  

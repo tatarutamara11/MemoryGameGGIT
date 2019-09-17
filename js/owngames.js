@@ -1,4 +1,4 @@
-//joaca Noastra
+
 var cards = [
     {
         name: "1",
@@ -62,46 +62,49 @@ var cards = [
     },
     {
         name: "13",
-        img: "images/12.jpg",
+        img: "images/13.jpg",
         id: 13
     },
     {
         name: "14",
-        img: "images/12.jpg",
+        img: "images/14.jpg",
         id: 14
     },
     {
         name: "15",
-        img: "images/12.jpg",
+        img: "images/15.jpg",
         id: 15
     },
     {
         name: "16",
-        img: "images/12.jpeg",
+        img: "images/16.jpeg",
         id: 16
     },
     {
         name: "17",
-        img: "images/12.png",
+        img: "images/17.png",
         id: 17
     },
     {
         name: "18",
-        img: "images/12.jpg",
+        img: "images/18.jpg",
         id: 18
     },
 ];
 
+t0='';
+t1='';
+var count = 0;
+
 function generateRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-levelGames = 2;
+levelGames = parseInt(localStorage.getItem("level"));
 cardsForGames = [];
 var whileLoop = true;
 switch (levelGames) {
-    case "1":
+    case 1:
         var newNumber = 0;
-        // console.log('test')
         while (whileLoop) {
             newNumber = generateRandom(0, cards.length - 1);
             if (!cardsForGames.includes(newNumber))
@@ -112,7 +115,6 @@ switch (levelGames) {
         break;
     case 2:
         var newNumber = 0;
-        // console.log('test')
         while (whileLoop) {
             newNumber = generateRandom(0, cards.length - 1);
             if (!cardsForGames.includes(newNumber))
@@ -121,29 +123,23 @@ switch (levelGames) {
                 whileLoop = false;
         }
         break;
-    case "3":
+    case 3:
         var newNumber = 0;
-        // console.log('test')
         while (whileLoop) {
             newNumber = generateRandom(0, cards.length - 1);
             if (!cardsForGames.includes(newNumber))
                 cardsForGames.push(newNumber)
             if (cardsForGames.length >= 18)
                 whileLoop = false;
+
         }
 
         break;
 }
-
 function arrangeCards() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 var oneD = [[], []]
-// Create one dimensional array 
-// var oneD = new Array(levelGames*2); 
-
-// Loop to create 2D array using 1D array 
-document.write("Creating 2D array <br>");
 for (var i = 0; i < (levelGames * 2); i++) {
     if (!oneD[i])
         oneD[i] = [];
@@ -151,21 +147,11 @@ for (var i = 0; i < (levelGames * 2); i++) {
         oneD[i][j] = -1;
 }
 var h = 0;
-var s = "GeeksforGeeks";
-
-// // Loop to initilize 2D array elements. 
-// for (var i = 0; i < levelGames*2; i++) { 
-//     for (var j = 0; j < levelGames*2; j++) { 
-
-//         oneD[i][j] = s[h++]; 
-//     } 
-// } 
-
+var s = "GeeksforGeeks"; 
 var j = 0;
 k = 0;
 whileLoop2 = true;
 whileLoop3 = true;
-// console.log(oneD)
 for (var i = 0; i < cardsForGames.length; i++) {
     whileLoop2 = true;
     whileLoop3 = true;
@@ -187,36 +173,25 @@ for (var i = 0; i < cardsForGames.length; i++) {
         }
     }
 }
-// Loop to display the elements of 2D array. 
-// console.log('Dupa prelucrare', "\n",oneD)
-
-for (var i = 0; i < levelGames * 2; i++) {
-    for (var j = 0; j < levelGames * 2; j++) {
-        document.write(oneD[i][j] + " ");
-
-    }
-    document.write("<br>");
-}
-//  console.log(cards)
 $("table").append(function () {
     var rows = [];
+    var arina = 0;
     for (var i = 0; i < levelGames * 2; i++) {
         rows.push($("<tr>").append(function () {
             var cols = [];
             for (var j = 0; j < levelGames * 2; j++) {
                 var cardInfo;
                 var position = oneD[i][j];
-                // console.log(position, ' - ', cards[position])
                 cardInfo = $("<img>", {
                     src: cards[oneD[i][j]].img,
-                    width: 50,
-                    height: 50,
+                    width: 80,
+                    height: 80,
                     cards_id:cards[oneD[i][j]].id
                 }).hide();
                 cardInfoBack = $("<img>", {
-                    src: "images/50px.gif",
-                    width: 50,
-                    height: 50,
+                    src: "images/molddata1.png",
+                    width: 80,
+                    height: 80,
                     cards_id_back:cards[oneD[i][j]].id
                 });
                 var td;
@@ -224,101 +199,87 @@ $("table").append(function () {
                 td.attr('idCards', cards[oneD[i][j]].id);
                 td.attr('statute', "closed");
                 td.attr("matched", false);
+                td.attr("id", arina);
                 td.on("click", cardClicked);
 
-
                 cols.push(td.append(cardInfo).append(cardInfoBack));
+                arina++;
             }
             return cols;
         }));
     }
     return rows;
 });
-
-count = 1;
 var openedCards;
 function cardClicked() {
-    // console.log(count, '    ', $(this).attr('statute'))
-    if ( ($(this).attr('statute') == 'closed') && (count == 1) ) {
-        $(this).addClass("clicked");
-        $(this).attr('statute', 'opened')
+        
         var idCards = $(this).attr('idcards');
         var parent = $(this).children();
-        count++;
+        var arinaStatus = $(this).attr('id');
         for (var i = 0; i < parent.length;i++) {
             if(typeof parent[i].attributes['cards_id'] != 'undefined' && parent[i].attributes['cards_id'].nodeValue == idCards) {
-                $(parent[i]).show()
+                $(parent[i]).show();
+               if ($(this).attr('statute')=='closed') statusCard(idCards, arinaStatus)
             }
             if(typeof parent[i].attributes['cards_id_back'] != 'undefined' && parent[i].attributes['cards_id_back'].nodeValue == idCards) {
                 $(parent[i]).hide()
             }
         }
+        if (count2==(levelGames*levelGames*4)) {endGame()};
     }
-
-    if ( ($(this).attr('statute') == 'closed') && (count == 2) ) {    
-        count=1
-        var idCards = $(this).attr('idcards');
-        var parent = $(this).children();
-        for (var i = 0; i < parent.length;i++) {
-            if(typeof parent[i].attributes['cards_id'] != 'undefined' && parent[i].attributes['cards_id'].nodeValue == idCards) {
-                $(parent[i]).show().delay(1000).fadeOut();
-            }
-            if(typeof parent[i].attributes['cards_id_back'] != 'undefined' && parent[i].attributes['cards_id_back'].nodeValue == idCards) {
-                $(parent[i]).hide().delay(1000).fadeIn();
-            }
-
+    count2=0;
+function statusCard(card_id, cell_nb) {
+   
+   if (count == 0) {t0 = performance.now()};
+   count++;
+    if ($('#status_card').attr('card_one') == '') {
+        $('#status_card').attr('card_one', card_id);
+        $('#status_card').attr('cell_one', cell_nb);
+        count2++;
+    } else if ($('#status_card').attr('card_one') != '' && ($('#status_card').attr('card_two') == '')  && ($('#status_card').attr('cell_one') != cell_nb)){
+        $('#status_card').attr('card_two', card_id);
+        $('#status_card').attr('cell_two', cell_nb);
+        count2++
+    } else if ($('#status_card').attr('card_one') != '' && $('#status_card').attr('card_two') != ''  && ($('#status_card').attr('cell_one') != cell_nb)  && ($('#status_card').attr('cell_two') != cell_nb)) {
+        count2++;
+        if ($('#status_card').attr('card_one') == $('#status_card').attr('card_two')) {
+            $('#status_card').attr('card_one', card_id);
+            $('#status_card').attr('cell_one', cell_nb);
+            $('#status_card').attr('card_two', '');
+            $('#status_card').attr('cell_two', '');
+            
+        } else {
+            showHideCards($('#status_card').attr('card_one'), $('#status_card').attr('cell_one'));
+            showHideCards($('#status_card').attr('card_two'), $('#status_card').attr('cell_two'));
+            $('#status_card').attr('card_one', card_id);
+            $('#status_card').attr('cell_one', cell_nb);
+            $('#status_card').attr('card_two', '');
+            $('#status_card').attr('cell_two', '');
+            count2=count2-2;
+        }
+        
     }
+}
 
-    if ( ($(this).attr('statute') == 'closed') && (count == 2) ) {    
-        count=1
+function showHideCards(cardId, cellID){
+    var parent = $('#'+cellID).children();
+    for (var i = 0; i < parent.length;i++) {
+        if(typeof parent[i].attributes['cards_id'] != 'undefined' && parent[i].attributes['cards_id'].nodeValue == cardId) {
+            $(parent[i]).hide();
+        }
+        if(typeof parent[i].attributes['cards_id_back'] != 'undefined' && parent[i].attributes['cards_id_back'].nodeValue == cardId) {
+            $(parent[i]).show()
+        }
     }
-
-
-
-
-
-
-
-
-        // $("ul").find("[data-slide='" + current + "']"); 
-        // $("img").each(function(index, e) {
-        //     // console.log(index, '        -',$(e).attr("cards_id"));
-        //     if( $(e).attr("cards_id") == idCards) {
-        //         $(e).show();
-        //     }
-        //     if( $(e).attr("cards_id_back") == idCards) {
-        //         $(e).hide();
-        //     }
-        //     //console.log(imgsrc);
-        //   });
-    }
-    // if (($(this).attr('statute') == 'closed') && (count == 2)) {
-    //              {if (($(this).attr('idCards')== .attr('idCards') ) && (.attr('staute')=='opened')) {
-    //                 $(this).attr('matched', true);
-    //                 $().attr('matched', true);
-    //                 $().addClass("clicked");
-    //              } else {
-    //                 $(this).addTemporaryClass('clicked', 1000);
-    //          }
-    //     }
-    // } 
 }
     
-
-
-console.log("After - ", $(this).attr('statute'))
-    
-
-
-
-
-
-
-// console.log(cardsForGames)
-// $.each( cards, function( key, value ) {
-//     console.log( value.name + ' : '+ value.img );
-// });
-
+function endGame(){
+    localStorage.setItem("movesNumber", count);
+    t1 = performance.now();
+    time=(t1-t0)*0.001;
+    localStorage.setItem("totalTime", time);
+  window.location.href = "../html/congratulations.html";
+}
 
 
 
